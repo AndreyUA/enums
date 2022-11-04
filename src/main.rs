@@ -1,4 +1,5 @@
 #[derive(Debug)]
+
 enum IpAddr {
     V4(u8, u8, u8, u8),
     V6(String),
@@ -20,4 +21,8 @@ fn main() {
 
     let test = IpAddr::V6(String::from("This is V6"));
     test.print();
+
+    let some_number = Some(6);
+    let some_char = Some('a');
+    let absent_number: Option<i32> = None;
 }
