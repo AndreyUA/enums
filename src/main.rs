@@ -1,5 +1,4 @@
 #[derive(Debug)]
-
 enum IpAddr {
     V4(u8, u8, u8, u8),
     V6(String),
@@ -25,13 +24,21 @@ fn main() {
     let some_number = Some(6);
     let some_char = Some('a');
     let absent_number: Option<i32> = None;
+
+    value_in_cents(Coin::Quarter(UsState::Alaska));
 }
 
 enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsState),
+}
+
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
 }
 
 fn value_in_cents(coin: Coin) -> u8 {
@@ -43,6 +50,10 @@ fn value_in_cents(coin: Coin) -> u8 {
         }
         Coin::Nickel => 5,
         Coin::Dime => 10,
-        Coin::Quarter => 25,
+        Coin::Quarter(state) => {
+            println!("State quarter from {:?}!", state);
+
+            25
+        }
     }
 }
